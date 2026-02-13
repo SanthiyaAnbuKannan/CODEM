@@ -1,0 +1,1 @@
+console.log("Welcome! The page has loaded successfully.");
