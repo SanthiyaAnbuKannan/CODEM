@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 3 </title>
+    </head>
+    <body>
+        <button onclick="checkOrder(true,true)"> Order confirmed </button>
+        <button onclick="checkOrder(true,false)"> Order delayed </button>
+        <button onclick="checkOrder(false,true)"> Payment required </button>
+    </body>
+    <script>
+        function checkOrder(isPaid, inStock){
+            if(isPaid){
+                if(inStock){
+                    alert("Order confirmed");
+                }
+                else{
+                    alert("Order delayed");
+                }
+            }
+            else{
+                alert("Payment required");
+            }
+        }
+    </script>
+</html>
