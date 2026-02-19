@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 10 </title>
+    </head>
+    <body>
+        <button onclick="checkLogin(true, true, false)">All Correct</button>
+        <button onclick="checkLogin(false, true, false)">Wrong Password</button>
+        <button onclick="checkLogin(true, false, false)">OTP Not Verified</button>
+        <button onclick="checkLogin(true, true, true)">Account Blocked</button>
+        <script>
+            function checkLogin(isPasswordCorrect, isOtpVerified, isAccountBlocked){
+                if(isPasswordCorrect && isOtpVerified && !isAccountBlocked){
+                    console.log("Login Successful");
+                }
+                else{
+                    console.log("Login Failed");
+                }
+            }
+        </script>
+    </body>
+</html>
