@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 9</title>
+    </head>
+    <body>
+        <button onclick="detectIntent('Why this machine is not working?')">Question + Complaint</button>
+        <button onclick="detectIntent('There is a problem going in the class')">Complaint</button>
+        <button onclick="detectIntent('When will you come?')">Question</button>
+        <button onclick="detectIntent('Hello')">Other</button>
+        <script>
+            function detectIntent(message){
+                if(!message || message.trim() === ""){
+                    console.log("Invalid message");
+                    return;
+                }
+                let lowerMessage = message.toLowerCase();
+                let isQuestion = lowerMessage.includes("?");
+                let isComplaint = 
+                    lowerMessage.includes("problem") || 
+                    lowerMessage.includes("not working");
+                let intent;
+                if(isQuestion && isComplaint){
+                    intent = "Urgent request";
+                }
+                else if(isComplaint){
+                    intent = "Complaint";
+                }
+                else if(isQuestion){
+                    intent = "Question";
+                }
+                else{
+                    intent = "Other";
+                }
+                console.log("Original Message:", message);
+                console.log("Detected Intent:", intent);
+            }
+        </script>
+    </body>
+</html>
