@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 6 </title>
+    </head>
+    <body>
+
+        <button onclick="calculateBill(500, false)"> Regular </button>
+        <button onclick="calculateBill(2000, true)"> Member </button>
+        <script>
+        function calculateBill(billAmount, isMember){
+            if(billAmount <= 0){
+                console.log("Error: Invalid bill amount");
+                return;
+            }
+            let discount = 0;
+            if(isMember){
+                discount = 10;
+            }
+            else if(billAmount >= 1000){
+                discount = 5;
+            }
+            else{
+                discount = 0;
+            }
+            let discountAmount = (billAmount * discount) / 100;
+            let finalAmount = billAmount - discountAmount;
+            let gift;
+            if(finalAmount >= 1500){
+                gift = "Free Gift Included";
+            }
+            else{
+                gift = "No Gift";
+            }
+            console.log("Bill Amount: Rs." + billAmount);
+            console.log("Discount Applied: " + discount + "%");
+            console.log("Final Amount: Rs." + finalAmount);
+            console.log("Gift Status: " + giftStatus);
+        }
+        </script>
+    </body>
+</html>
