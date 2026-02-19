@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 11</title>
+    </head>
+    <body>
+
+        <button onclick="weatherActionAdvisor('rainy', 25)">Rainy</button>
+        <button onclick="weatherActionAdvisor('sunny', 35)">Sunny</button>
+        <button onclick="weatherActionAdvisor('cloudy', 28)">Cloudy</button>
+
+        <script>
+            function weatherActionAdvisor(weather, temperature){
+                let condition = weather.toLowerCase();
+                let suggestion = "";
+                if(condition === "rainy"){
+                    suggestion = "Carry an umbrella";
+                }
+                else if(condition === "sunny"){
+                    suggestion = "Stay hydrated";
+                }
+                else if(condition === "cloudy"){
+                    suggestion = "Weather looks pleasant";
+                }
+                else{
+                    suggestion = "Unknown weather";
+                }
+                alert("Weather: " + weather + "\nTemperature: " + temperature + "°C" + "\nSuggestion: " + suggestion);
+            }
+        </script>
+    </body>
+</html>
