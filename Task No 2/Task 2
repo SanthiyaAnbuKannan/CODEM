@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 2 </title>
+    </head>
+    <body>
+        <button onclick = " checkTicket(23,false) "> Adult </button>
+        <button onclick="checkTicket(15,true)"> Teen </button>
+        <button onclick="checkTicket(5,true)"> Child </button>
+    </body>
+    <script>
+        function checkTicket(age, hasPermission){
+            if(age >= 13 && age <= 17){
+                if(hasPermission){
+                    console.log("Allowed");
+                }
+                else{
+                    console.log("Disallowed");
+                }
+            }
+            else{
+                console.log("Allowed...");
+            }
+        }
+    </script>
+</html>
