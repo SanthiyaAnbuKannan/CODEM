@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 1 </title>
+    </head>
+    <body>
+        Username: <input type="text" id="username">
+        <br>
+        Password: <input type="password" id = "password">
+        <br>
+        <button onclick = " validate('admin') "> Admin </button>
+        <button onclick = "validate('user')"> User </button>
+        <button onclick = "validate('guest')"> Guest </button>
+        <script>
+            function validate(role){
+                let user = document.getElementById("username").value;
+                let pass = document.getElementById("password").value;
+                let checkRole = validateLogin(user,pass);
+                if(checkRole === role){
+                    if(checkRole === "admin"){
+                        console.log("Full access granted");
+                    }
+                    else if(checkRole === "user"){
+                        console.log("Limited access granted");
+                    }
+                    else if(checkRole == "guest"){
+                        console.log("Read-only access");
+                    }
+                }
+                else{
+                    console.log("Invalid credentials");
+                }
+            }
+            function validateLogin(user, pass){
+
+                    if(user==="admin" && pass === "123"){
+                        return "admin";
+                    }
+                    
+                    else if(user==="user" && pass === "456"){
+                        return "user";
+                    }
+                    else if(user==="guest" && pass === "789"){
+                        return "guest";
+                    }
+                    else{
+                        return null;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
