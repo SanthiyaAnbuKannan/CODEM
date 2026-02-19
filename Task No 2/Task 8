@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 8 </title>
+    </head>
+    <body>
+        <button onclick="processMessage('Error occured', false)">Error Message</button>
+        <button onclick="processMessage('How are you?', false)">Normal Message</button>
+        <button onclick="processMessage('Urgent, Come quick...', true)">Urgent Message</button>
+        <script>
+            function processMessage(message, isUrgent){
+                if(!message || message.trim() === ""){
+                    console.log("Message cannot be empty");
+                    return;
+                }
+                let lowerMessage = message.toLowerCase();
+                let hasWarningWord = lowerMessage.includes("error") || lowerMessage.includes("fail");
+                let isHighPriority = isUrgent || hasWarningWord;
+                let finalMessage;
+                if(isHighPriority){
+                    finalMessage = "IMPORTANT: " + message.toUpperCase();
+                }
+                else{
+                    finalMessage = "INFO: " + message.toLowerCase();
+                }
+                console.log("Final Message:", finalMessage);
+                console.log("High Priority:", isHighPriority);
+            }
+        </script>
+    </body>
+</html>
