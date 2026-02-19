@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 7 </title>
+    </head>
+    <body>
+        <button onclick="checkTravelEligibility(25, 'normal', true)">Adult Normal</button>
+        <button onclick="checkTravelEligibility(16, 'priority', false)">Minor Priority</button>
+        <button onclick="checkTravelEligibility(15, 'normal', false)">Minor Normal</button>
+        <script>
+        function checkTravelEligibility(age, ticketType, hasID){
+            if(age <= 0){
+                console.log("Invalid age");
+                return;
+            }
+            if(ticketType !== "normal" && ticketType !== "priority"){
+                console.log("Invalid ticket type");
+                return;
+            }
+            let eligibility;
+            if(age >= 18 && hasID){
+                eligibility = "Eligible";
+            }
+            else if(age < 18 && ticketType === "priority"){
+                eligibility = "Eligible with guardian";
+            }
+            else{
+                eligibility = "Not eligible";
+            }
+            let baseFare = 200;
+            if(ticketType === "priority"){
+                baseFare += 50;
+            }
+            console.log("Ticket Type:", ticketType);
+            console.log("Eligibility:", eligibility);
+            console.log("Fare: ₹" + baseFare);
+        }
+        </script>
+    </body>
+</html>
