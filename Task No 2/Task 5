@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 5 </title>
+    </head>
+    <body>
+        <button onclick="processOrder(500, false, '')"> Small Order </button>
+        <button onclick="processOrder(2000, false, 'SAVE10')"> Medium Order </button>
+        <button onclick="processOrder(5000, true, 'VIP')"> Large Order </button>
+    </body>
+    <script>
+        function processOrder(orderAmount, isMember, couponCode){
+            if(typeof orderAmount !== 'number' || orderAmount <= 0){
+                console.log("Invalid order amount");
+                return;
+            }
+            let discount = 0;
+            if(orderAmount >= 3000 || isMember){
+                discount = 20;
+            }
+            else if(orderAmount >= 1500 && couponCode === "SAVE10"){
+                discount = 10;
+            }
+            else if(couponCode === ""){
+                discount = 0;
+            }
+            else{
+                discount = 5;
+            }
+            let discountAmount = (orderAmount * discount) / 100;
+            let finalAmount = orderAmount - discountAmount;
+            let deliveryStatus;
+            if(finalAmount >= 2000){
+                deliveryStatus = "Free Delivery";
+            }
+            else{
+                finalAmount += 100;
+                deliveryStatus = "₹100 Delivery Charge Applied";
+            }
+            validateCoupon(couponCode);
+            console.log("Order Amount: ₹" + orderAmount);
+            console.log("Discount Applied: " + discount + "%");
+            console.log("Final Amount: ₹" + finalAmount);
+            console.log("Delivery Status: " + deliveryStatus);
+        }
+        function validateCoupon(couponCode){
+            if(couponCode === "SAVE10"){
+                console.log("Coupon Valid");
+            }
+            else if(couponCode === ""){
+                console.log("No Coupon Applied");
+            }
+            else{
+                console.log("Invalid Coupon");
+            }
+        }
+    </script>
+</html>
