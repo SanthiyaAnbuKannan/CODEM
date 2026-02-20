@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 12</title>
+    </head>
+    <body>
+        <button onclick="checkPassword('Sandy')">Test Weak</button>
+        <button onclick="checkPassword('Santhiya13')">Test Medium</button>
+        <button onclick="checkPassword('Santhiya@123')">Test Strong</button>
+        <script>
+            function checkPassword(password){
+                let hasUppercase = /[A-Z]/.test(password);
+                let hasNumber = /[0-9]/.test(password);
+                let hasSpecialChar = /[!@#$%^&*]/.test(password);
+                let strength = "";
+                if(password.length < 6){
+                    strength = "Weak";
+                }
+                else if(password.length >= 8 && hasNumber && hasUppercase && hasSpecialChar){
+                    strength = "Strong";
+                }
+                else{
+                    strength = "Medium";
+                }
+                alert(`Password: ${password} \nStrength: ${strength}`);
+            }
+        </script>
+    </body>
+</html>
