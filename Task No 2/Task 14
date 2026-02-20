@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 14 </title>
+    </head>
+        <body>
+        <button onclick="checkNotification('Hi...', false)">Normal</button>
+        <button onclick="checkNotification('Error occurred', false)">Error</button>
+        <button onclick="checkNotification('GO fast', true)">Urgent</button>
+        <script>
+            function checkNotification(message, isUrgent){
+                let text = message.toLowerCase();
+                if(isUrgent || text.includes("error") || text.includes("alert") || text.includes("warning")){
+                    alert("IMPORTANT: " + message.toUpperCase());
+                }
+                else{
+                    alert("Normal: " + message);
+                }
+            }
+        </script>
+    </body>
+</html>
