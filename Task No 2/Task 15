@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 15 </title>
+    </head>
+    <body>
+        <button onclick="checkPaymentStatus(1000, true, 'UPI')">amount = 1000, UPI)</button>
+        <button onclick="checkPaymentStatus(2000, true, 'Card')">amount = 2000, Paid, Card)</button>
+        <button onclick="checkPaymentStatus(1500, false, 'UPI')">amount = 1500, notPaid, UPI)</button>
+        <button onclick="checkPaymentStatus(0, true, 'Cash')">amount = 0, Paid, Cash)</button>
+        <button onclick="checkPaymentStatus(1200, true, 'Cash')">amount = 1200, Paid, Cash)</button>
+        <script>
+            function checkPaymentStatus(amount, isPaid, paymentMethod){
+                let status = "";
+                if(amount <= 0){
+                    status = "Invalid payment amount";
+                }
+                else if(!isPaid){
+                    status = "Payment Pending";
+                }
+                else if(paymentMethod === "UPI" || paymentMethod === "Card"){
+                    status = "Payment Successful";
+                }
+                else{
+                    status = "Invalid payment method";
+                }
+                console.log(`Payment Status: ${status} \nAmount: Rs.${amount} \nPayment Method: ${paymentMethod}`);
+            }
+        </script>
+    </body>
+</html>
