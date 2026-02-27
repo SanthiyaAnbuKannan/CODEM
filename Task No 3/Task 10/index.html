@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 10</title>
+        <style>
+            button:disabled {
+                background-color: gray;
+                color: white;
+                cursor: not-allowed;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="toggleBtn">Toggle Button</button>
+        <button id="targetBtn">Target Button</button>
+        <script>
+            let toggleBtn = document.getElementById("toggleBtn");
+            let targetBtn = document.getElementById("targetBtn");
+            toggleBtn.addEventListener("click", function() {
+                if(targetBtn.hasAttribute("disabled")) {
+                    targetBtn.removeAttribute("disabled");
+                    console.log("Disabled attribute removed. Button is now enabled.");
+                } else {
+                    targetBtn.setAttribute("disabled", "true");
+                    console.log("Disabled attribute added. Button is now disabled.");
+                }
+                console.log("Current disabled attribute:", targetBtn.getAttribute("disabled"));
+            });
+        </script>
+    </body>
+</html>

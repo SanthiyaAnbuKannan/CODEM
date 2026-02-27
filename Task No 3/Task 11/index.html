@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 11 </title>
+        <style>
+            .buttons {
+                padding: 10px 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="buttons">Button 1</button>
+        <button class="buttons">Button 2</button>
+        <button class="buttons">Button 3</button>
+        <div id="output">Click a button to see the info here.</div>
+        <script>
+            let allButtons = document.querySelectorAll(".buttons");
+            function handleClick(event) {
+                let clickedButtonText = event.target.textContent;
+                let eventType = event.type;
+                let output = document.getElementById("output");
+                output.textContent = "You clicked: " + clickedButtonText + ", Event type: " + eventType;
+                console.log("Clicked Button:", clickedButtonText);
+                console.log("Event Type:", eventType);
+            }
+            for (let i = 0; i < allButtons.length; i++) {
+                allButtons[i].addEventListener("click", handleClick);
+            }
+        </script>
+    </body>
+</html>

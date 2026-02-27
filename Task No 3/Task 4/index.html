@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Task 4</title>
+    </head>
+    <body>
+        <script>
+            let studentMarks = {
+                Santhiya: 95,
+                Vilei: 97,
+                Dev : 30
+            };
+            let passMark = 40;
+            for (let student in studentMarks) {
+                let mark = studentMarks[student];
+                let status = (mark >= passMark) ? "Pass" : "Fail";
+                console.log("Name: " + student + ", Mark: " + mark + ", Status: " + status);
+            }
+        </script>
+    </body>
+</html>

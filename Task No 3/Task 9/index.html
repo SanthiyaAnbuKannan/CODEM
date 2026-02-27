@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 9 </title>
+        <style>
+            .highlight {
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h2 id="heading">Original Heading</h2>
+            <p>First paragraph</p>
+            <p>Second paragraph</p>
+            <p>Third paragraph</p>
+        </div>
+        <script>
+            let heading = document.getElementById("heading");
+            heading.parentElement.style.border = "2px solid blue";
+            let firstChild = heading.parentElement.children[0];
+            firstChild.textContent = "Updated Heading via DOM Traversal";
+            firstChild.classList.add("highlight");
+            let nextSibling = heading.nextElementSibling;
+            nextSibling.style.backgroundColor = "lightyellow";
+            nextSibling.textContent = "Updated First Paragraph via Sibling";
+        </script>
+    </body>
+</html>

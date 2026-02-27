@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 3 </title>
+    </head>
+    <body>
+        <script>
+            let cart = {
+                item1: {
+                    name: "Laptop",
+                    price: 50000,
+                    quantity: 1
+                },
+                item2: {
+                    name: "Mouse",
+                    price: 500,
+                    quantity: 2
+                },
+                item3: {
+                    name: "Keyboard",
+                    price: 1500,
+                    quantity: 1
+                }
+            };
+            function PriceDisplay() {
+                let totalPrice = 0;
+
+                for (let key in cart) {
+                    totalPrice += cart[key].price * cart[key].quantity;
+                }
+                console.log("Total Cart Price: Rs." + totalPrice);
+            }
+            console.log("Before updating the cart:");
+            PriceDisplay();
+            cart.item3.quantity = 2;
+            console.log("After updating the cart:");
+            PriceDisplay();
+        </script>
+    </body>
+</html>

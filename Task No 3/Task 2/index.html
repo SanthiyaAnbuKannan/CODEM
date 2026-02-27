@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 2 </title>
+    </head>
+    <body>
+        <script>
+            let user = {
+                name: "Santhiya",
+                age: 20,
+                email: "santhiyaanbukannan@gmail.com"
+            };
+            function updateUser(userObj) {
+                userObj.name = "Santhiya Kannan";
+                userObj.age = 21;
+                userObj.father = "Kannan";
+                return `Name: ${userObj.name} Age: ${userObj.age} Email: ${userObj.email} Father: ${userObj.father}`;
+            }
+            let data = updateUser(user);
+            console.log("Data returned from function:")
+            console.log(data);
+            console.log("Original Object After Update:");
+            console.log(user);
+        </script>
+    </body>
+</html>

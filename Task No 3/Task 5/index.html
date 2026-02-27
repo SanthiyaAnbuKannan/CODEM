@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 5 </title>
+    </head>
+    <body>
+        <script>
+            let bankAccount = {
+                accountHolder: "Santhiya",
+                balance: 5000,
+                deposit: function(amount) {
+                    this.balance = this.balance + amount;
+                    console.log("Deposit Successful!");
+                    console.log("Account Holder: " + this.accountHolder);
+                    console.log("Updated Balance: Rs." + this.balance);
+                }
+            };
+            bankAccount.deposit(2000);
+            console.log("Final Object State:");
+            console.log(bankAccount);
+        </script>
+    </body>
+</html>

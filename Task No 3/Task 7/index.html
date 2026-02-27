@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 7 </title>
+        <style>
+            .student {
+                padding: 10px;
+                margin: 5px;
+                border: 1px solid black;
+            }
+            .highlight {
+                background-color: yellow;
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="toggleBtn">Toggle Highlight</button>
+        <p class="student">Student 1</p>
+        <p class="student">Student 2</p>
+        <p class="student">Student 3</p>
+        <script>
+            let students = document.getElementsByClassName("student");
+            let button = document.getElementById("toggleBtn");
+            button.addEventListener("click", function() {
+                for (let i = 0; i < students.length; i++) {
+                    students[i].classList.toggle("highlight");
+                }
+            });
+        </script>
+    </body>
+</html>
