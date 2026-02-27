@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Task 14 </title>
+    <style>
+        #display {
+            width: 300px;
+            height: 100px;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Press any key...</h3>
+    <div id="display">Waiting for key...</div>
+<script>
+    let display = document.getElementById("display");
+    document.addEventListener("keydown", function(event) {
+        let pressedKey = event.key;
+        if (pressedKey === "a") {
+            display.textContent = "You pressed A (keydown)";
+            display.style.backgroundColor = "lightblue";
+        }
+        else if (pressedKey === "Enter") {
+            display.textContent = "Enter key pressed (keydown)";
+            display.style.backgroundColor = "lightgreen";
+        }
+        else {
+            display.textContent = "Key Down: " + pressedKey;
+            display.style.backgroundColor = "lightgray";
+        }
+    });
+    document.addEventListener("keyup", function(event) {
+        let releasedKey = event.key;
+        display.textContent = "Key Up: " + releasedKey;
+        display.style.backgroundColor = "white";
+    });
+</script>
+</body>
+</html>
