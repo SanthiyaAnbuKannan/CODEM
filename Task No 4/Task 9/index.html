@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 9 </title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 400px;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+            button {
+                padding: 4px 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Inventory Manager</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="inventoryTable"></tbody>
+        </table>
+        <script>
+            let inventory = [
+                { product: "Pen", quantity: 10 },
+                { product: "Notebook", quantity: 5 },
+                { product: "Eraser", quantity: 0 }
+            ];
+            function displayInventory() {
+                let table = document.getElementById("inventoryTable");
+                table.innerHTML = "";
+                for (let i = 0; i < inventory.length; i++) {
+                    let row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${inventory[i].product}</td>
+                        <td>${inventory[i].quantity}</td>
+                        <td>
+                            <button onclick="increase(${i})">Increase</button>
+                            <button onclick="decrease(${i})">Decrease</button>
+                        </td>
+                    `;
+                    table.appendChild(row);
+                }
+            }
+            function increase(index) {
+                inventory[index].quantity++;
+                displayInventory();
+            }
+            function decrease(index) {
+                if (inventory[index].quantity > 0) {
+                    inventory[index].quantity--;
+                }
+                displayInventory();
+            }
+            displayInventory();
+        </script>
+    </body>
+</html>

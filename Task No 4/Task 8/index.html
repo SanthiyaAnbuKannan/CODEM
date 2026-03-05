@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 8 </title>
+        <style>
+            #studentList .divclass{
+                display:grid;
+                column-gap: 30px;
+                grid-template-columns: 100px 100px 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Attendance Tracker</h2>
+        <div id="studentList"></div>
+        <h3 id="summary"></h3>
+        <script>
+            let students = [
+                { name: "Ali", present: true },
+                { name: "Sara", present: false }
+            ];
+            function displayStudents() {
+                let container = document.getElementById("studentList");
+                container.innerHTML = "";
+                let presentCount = 0;
+                let absentCount = 0;
+                for (let i = 0; i < students.length; i++) {
+                    if (students[i].present) {
+                        presentCount++;
+                    } else {
+                        absentCount++;
+                    }
+                    let div = document.createElement("div");
+                    div.classList.add("divclass");
+                    let statusText = students[i].present ? "Present" : "Absent";
+                    div.innerHTML = `${students[i].name} - <b>${statusText}</b> <button onclick="toggleAttendance(${i})">Toggle</button><br>`;
+                    container.appendChild(div);
+                }
+                document.getElementById("summary").innerText =
+                    "Present: " + presentCount + "    Absent: " + absentCount;
+            }
+            function toggleAttendance(index) {
+                students[index].present = !students[index].present;
+                displayStudents();
+            }
+            displayStudents();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 6 </title>
+        <style>
+            li {
+                padding: 5px;
+                margin: 3px 0;
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Search & Highlight</h2>
+        <input type="text" id="searchInput" placeholder="Type to search..." onkeyup="searchText()">
+        <ul id="textList"></ul>
+        <script>
+            let texts = ["JavaScript", "Java", "Python", "React", "Node.js", "C++", "Ruby"];
+            function displayList(list) {
+                let ul = document.getElementById("textList");
+                ul.innerHTML = "";
+                if(list.length === 0){
+                    ul.innerHTML = "<li>No results found.</li>";
+                    return;
+                }
+                for(let i=0; i<list.length; i++){
+                    let li = document.createElement("li");
+                    li.innerText = list[i];
+                    ul.appendChild(li);
+                }
+            }
+            displayList(texts);
+            function searchText(){
+                let input = document.getElementById("searchInput").value.toLowerCase();
+                let filtered = [];
+                for(let i=0; i<texts.length; i++){
+                    if(texts[i].toLowerCase().includes(input)){
+                        filtered.push(texts[i]);
+                    }
+                }
+                displayList(filtered);
+            }
+        </script>
+    </body>
+</html>

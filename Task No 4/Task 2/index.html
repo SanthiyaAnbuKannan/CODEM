@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 2 </title>
+    </head>
+    <body>
+        <h2>Product List</h2>
+        Category:
+        <select id="category">
+            <option value="All">All</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+        </select>
+        Min Price:
+        <input type="number" id="minPrice">
+        Max Price:
+        <input type="number" id="maxPrice">
+        <button onclick="filterProducts()">Filter</button>
+        <br><br>
+        <div id="output"></div>
+        <script>
+            let products = [
+                { name: "Laptop", price: 50000, category: "Electronics" },
+                { name: "Phone", price: 20000, category: "Electronics" },
+                { name: "Shirt", price: 1200, category: "Clothing" },
+                { name: "Jeans", price: 2500, category: "Clothing" }
+            ];
+            let output = document.getElementById("output");
+            function showProducts(list) {
+                if (list.length == 0) {
+                    output.innerHTML = "No products found";
+                    return;
+                }
+                let table = "<table border='1' cellpadding='8'>";
+                table += "<tr><th>Name</th><th>Price</th><th>Category</th></tr>";
+                for (let i = 0; i < list.length; i++) {
+                    table += "<tr>";
+                    table += "<td>" + list[i].name + "</td>";
+                    table += "<td>" + list[i].price + "</td>";
+                    table += "<td>" + list[i].category + "</td>";
+                    table += "</tr>";
+                }
+                table += "</table>";
+                output.innerHTML = table;
+            }
+            showProducts(products);
+            function filterProducts() {
+                let selectedCategory = document.getElementById("category").value;
+                let min = document.getElementById("minPrice").value;
+                let max = document.getElementById("maxPrice").value;
+                let filtered = [];
+                for (let i = 0; i < products.length; i++) {
+                    let p = products[i];
+                    if ((selectedCategory == "All" || p.category == selectedCategory) && (min == "" || p.price >= min) && (max == "" || p.price <= max)){
+                        filtered.push(p);
+                    }
+                }
+                showProducts(filtered);
+            }
+        </script>
+    </body>
+</html>

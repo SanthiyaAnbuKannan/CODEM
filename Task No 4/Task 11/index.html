@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 11 </title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .step {
+                margin: 8px 0;
+                font-size: 18px;
+            }
+            .number {
+                display: inline-block;
+                width: 40px;
+                text-align: center;
+                padding: 6px;
+                margin-right: 5px;
+                background-color: lightblue;
+                border-radius: 4px;
+            }
+            button {
+                margin-bottom: 15px;
+                padding: 6px 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Sorting Visualizer (Bubble Sort)</h2>
+        <button onclick="startSort()">Generate & Sort</button>
+        <div id="output"></div>
+        <script>
+            function generateRandomNumbers(size = 5) {
+                let arr = [];
+                for (let i = 0; i < size; i++) {
+                    arr.push(Math.floor(Math.random() * 1000));
+                }
+                return arr;
+            }
+            function displayStep(arr) {
+                let container = document.getElementById("output");
+                let stepDiv = document.createElement("div");
+                stepDiv.className = "step";
+                for (let i = 0; i < arr.length; i++) {
+                    let span = document.createElement("span");
+                    span.className = "number";
+                    span.innerText = arr[i];
+                    stepDiv.appendChild(span);
+                }
+                container.appendChild(stepDiv);
+            }
+            function startSort() {
+                let numbers = generateRandomNumbers(5);
+                let container = document.getElementById("output");
+                container.innerHTML = ""; 
+                displayStep(numbers);
+                for (let i = 0; i < numbers.length; i++) {
+                    for (let j = 0; j < numbers.length - i - 1; j++) {
+                        if (numbers[j] > numbers[j + 1]) {
+                            let temp = numbers[j];
+                            numbers[j] = numbers[j + 1];
+                            numbers[j + 1] = temp;
+                            displayStep(numbers);
+                        }
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 3 </title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 50%;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+            }
+            button {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Editable Users Table</h2>
+        <div id="tableDiv"></div>
+        <script>
+            let users = [
+                { name: "Ali", age: 22, email: "ali@mail.com" },
+                { name: "Sara", age: 25, email: "sara@mail.com" }
+            ];
+            function renderTable() {
+                let table = "<table>";
+                table += "<tr><th>Name</th><th>Age</th><th>Email</th><th>Action</th></tr>";
+                for (let i = 0; i < users.length; i++) {
+                    table += "<tr>";
+                    table += `<td>${users[i].name}</td>`;
+                    table += `<td>${users[i].age}</td>`;
+                    table += `<td>${users[i].email}</td>`;
+                    table += `<td><button onclick="editRow(${i})">Edit</button></td>`;
+                    table += "</tr>";
+                }
+                table += "</table>";
+                document.getElementById("tableDiv").innerHTML = table;
+            }
+            function editRow(index) {
+                let row = document.getElementById("tableDiv").getElementsByTagName("tr")[index+1];
+                row.cells[0].innerHTML = `<input type='text' value='${users[index].name}'>`;
+                row.cells[1].innerHTML = `<input type='number' value='${users[index].age}'>`;
+                row.cells[3].innerHTML = `<button onclick='saveRow(${index})'>Save</button>`;
+            }
+            function saveRow(index) {
+                let row = document.getElementById("tableDiv").getElementsByTagName("tr")[index+1];
+                users[index].name = row.cells[0].children[0].value;
+                users[index].age = Number(row.cells[1].children[0].value);
+                renderTable();
+            }
+            renderTable();
+        </script>
+    </body>
+</html>

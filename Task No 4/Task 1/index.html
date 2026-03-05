@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 1 </title>
+        <style>
+            .grid{
+                display: grid;
+                gap:10px;
+                grid-template-columns: 100px 100px 100px;
+            }
+            .btn{
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="display_score"></p>
+        <p class="minmax_display"></p>
+        <script>
+            let scores = [10,15,8];
+            let element = document.querySelector(".display_score");
+            function display(){
+                let output = "";
+                for(let i = 0; i<scores.length; i++){
+                    output+= `<div class="grid">Player ${i+1}: ${scores[i]} <button class= "btn" onclick="increase(${i})"> Increase </button> <button class = "btn" onclick="decrease(${i})"> Decrease </button><br></div>`;
+                }
+                element.innerHTML = output;
+            }
+            display();
+            minmax();
+            function minmax(){
+                let min = scores[0];
+                let max = scores[0];
+                for(let i = 0; i<scores.length; i++){
+                    if(max<=scores[i]){
+                        max=scores[i];
+                    }
+                    if(min>=scores[i]){
+                        min=scores[i];
+                    }
+                }
+                minmaxelement=document.querySelector(".minmax_display");
+                minmaxelement.innerHTML = `Highest Score = ${max} <br> Lowest Score = ${min}`;
+
+            }
+            function increase(index){
+                scores[index] = scores[index] + 1;
+                display();
+                minmax();
+            }
+            function decrease(index){
+                scores[index] -= 1;
+                display();
+                minmax();
+            }
+        </script>
+    </body>
+</html>

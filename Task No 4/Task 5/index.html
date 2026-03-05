@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 5 </title>
+    </head>
+    <body>
+        <h2>Manual Pagination</h2>
+        <div id="itemsDiv"></div>
+        <button id="prevBtn" onclick="prevPage()">Previous</button>
+        <button id="nextBtn" onclick="nextPage()">Next</button>
+        <script>
+            let allItems = [];
+            for(let i=1; i<=20; i++){
+                allItems.push(i);
+            }
+            let currentPage = 1;
+            let itemsPerPage = 5;
+            let totalPages = Math.ceil(allItems.length / itemsPerPage);
+            let itemsDiv = document.getElementById("itemsDiv");
+            let prevBtn = document.getElementById("prevBtn");
+            let nextBtn = document.getElementById("nextBtn");
+            function displayPage() {
+                itemsDiv.innerHTML = "";
+                let start = (currentPage - 1) * itemsPerPage;
+                let end = start + itemsPerPage;
+                for(let i=start; i<end && i<allItems.length; i++){
+                    let item = document.createElement("div");
+                    item.innerText = allItems[i];
+                    itemsDiv.appendChild(item);
+                }
+                prevBtn.disabled = currentPage === 1;
+                nextBtn.disabled = currentPage === totalPages;
+            }
+            function nextPage() {
+                if(currentPage < totalPages){
+                    currentPage++;
+                    displayPage();
+                }
+            }
+            function prevPage() {
+                if(currentPage > 1){
+                    currentPage--;
+                    displayPage();
+                }
+            }
+            displayPage();
+        </script>
+    </body>
+</html>

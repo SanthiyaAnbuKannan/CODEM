@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task 4 – Duplicate Highlighter</title>
+        <style>
+            li {
+                padding: 5px;
+                margin: 3px 0;
+                list-style: none;
+                border: 1px solid #ccc;
+                width: 100px;
+            }
+            .highlight {
+                background-color: yellow;
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Duplicate Highlighter</h2>
+        <ul id="itemList"></ul>
+        <script>
+            let items = ["apple", "banana", "apple", "orange", "banana", "grape"];
+            let duplicates = []; 
+            for (let i = 0; i < items.length; i++) {
+                let count = 0;
+                for (let j = 0; j < items.length; j++) {
+                    if (items[i] === items[j]) {
+                        count++;
+                    }
+                }
+                if (count > 1 && !duplicates.includes(items[i])) {
+                    duplicates.push(items[i]);
+                }
+            }
+            let ul = document.getElementById("itemList");
+            for (let i = 0; i < items.length; i++) {
+                let li = document.createElement("li");
+                li.innerText = items[i];
+                if (duplicates.includes(items[i])) {
+                    li.classList.add("highlight");
+                }
+                ul.appendChild(li);
+            }
+        </script>
+    </body>
+</html>

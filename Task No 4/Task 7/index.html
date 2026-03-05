@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 7 </title>
+    </head>
+    <body>
+        <h2>Dynamic Form</h2>
+        <form id="dynamicForm">
+        </form>
+        <button onclick="submitForm()">Submit</button>
+        <script>
+            let fields = [
+                { type: "text", label: "Name" },
+                { type: "email", label: "Email" },
+                { type: "number", label: "Age" }
+            ];
+            let form = document.getElementById("dynamicForm");
+            for (let i = 0; i < fields.length; i++) {
+                let lbl = document.createElement("label");
+                lbl.innerText = fields[i].label + ": ";
+                lbl.htmlFor = "field" + i;
+                let input = document.createElement("input");
+                input.type = fields[i].type;
+                input.id = "field" + i;
+                let br = document.createElement("br");
+                form.appendChild(lbl);
+                form.appendChild(input);
+                form.appendChild(br);
+            }
+            function submitForm() {
+                let formData = [];
+                for (let i = 0; i < fields.length; i++) {
+                    let value = document.getElementById("field" + i).value;
+                    formData.push({ label: fields[i].label, value: value });
+                }
+                console.log("Form Data:", formData);
+                alert(JSON.stringify(formData, null, 2));
+            }
+        </script>
+    </body>
+</html>

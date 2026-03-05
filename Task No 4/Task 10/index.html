@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 10 </title>
+    </head>
+    <body>
+        <h2>Live Character Counter</h2>
+        <div id="app"></div>
+        <script>
+            let inputs = [];
+            let textarea = document.createElement("textarea");
+            textarea.rows = 4;
+            textarea.cols = 40;
+            let charCount = document.createElement("p");
+            let longestText = document.createElement("p");
+            let button = document.createElement("button");
+            button.innerText = "Submit";
+            let app = document.getElementById("app");
+            app.appendChild(textarea);
+            app.appendChild(charCount);
+            app.appendChild(longestText);
+            app.appendChild(button);
+            textarea.addEventListener("input", function () {
+                let text = textarea.value;
+                charCount.innerText = "Characters: " + text.length;
+                let longest = text;
+                for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].length > longest.length) {
+                        longest = inputs[i];
+                    }
+                }
+                longestText.innerText = "Longest Input: " + longest;
+            });
+            button.addEventListener("click", function () {
+                let text = textarea.value.trim();
+                if (text !== "") {
+                    inputs.push(text); 
+                    textarea.value = ""; 
+                    charCount.innerText = "Characters: 0";
+                }
+                console.log(inputs);
+            });
+        </script>
+    </body>
+</html>
