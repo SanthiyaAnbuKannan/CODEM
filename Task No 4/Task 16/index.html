@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 16 </title>
+        <style>
+            body { font-family: Arial; text-align: center; }
+            #gridContainer {
+                display: grid;
+                grid-gap: 5px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            .gridBox {
+                width: 40px;
+                height: 40px;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Color Pattern Generator</h2>
+        <div id="gridContainer"></div>
+        <script>
+            let colors = ["red", "blue", "green", "yellow"];
+            let rows = 3;
+            let cols = 5;
+            function generateGrid() {
+                let container = document.getElementById("gridContainer");
+                container.style.gridTemplateColumns = `repeat(${cols}, 40px)`;
+                for(let i = 0; i < rows; i++) {
+                    for(let j = 0; j < cols; j++) { 
+                        let box = document.createElement("div");
+                        box.className = "gridBox";
+                        let colorIndex = (i + j) % colors.length;
+                        box.style.backgroundColor = colors[colorIndex];
+                        container.appendChild(box);
+                    }
+                }
+            }
+            generateGrid();
+        </script>
+    </body>
+</html>
