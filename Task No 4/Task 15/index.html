@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 15 </title>
+        <style>
+            body { font-family: Arial; text-align: center; }
+            input { padding: 6px; width: 250px; margin-bottom: 15px; }
+            ul { list-style-type: none; padding: 0; width: 300px; margin: auto; }
+            li { margin: 5px 0; padding: 8px; border-radius: 4px; }
+            .passed { background-color: lightgreen; }
+            .failed { background-color: lightcoral; }
+        </style>
+    </head>
+    <body>
+        <h2>Password Rule Checker</h2>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <ul id="ruleList"></ul>
+        <script>
+            let rules = [
+                { rule: "Minimum 8 characters", isPassed: false },
+                { rule: "At least one uppercase letter", isPassed: false },
+                { rule: "At least one number", isPassed: false },
+                { rule: "At least one special character", isPassed: false }
+            ];
+            function checkPassword() {
+                let pwd = document.getElementById("passwordInput").value;
+                for (let i = 0; i < rules.length; i++) {
+                    let r = rules[i].rule;
+                    if(r === "Minimum 8 characters") {
+                        rules[i].isPassed = pwd.length >= 8;
+                    } else if(r === "At least one uppercase letter") {
+                        rules[i].isPassed = /[A-Z]/.test(pwd);
+                    } else if(r === "At least one number") {
+                        rules[i].isPassed = /[0-9]/.test(pwd);
+                    } else if(r === "At least one special character") {
+                        rules[i].isPassed = /[!@#$%^&*(),.?":{}|<>]/.test(pwd);
+                    }
+                }
+                displayRules();
+            }
+            function displayRules() {
+                let list = document.getElementById("ruleList");
+                list.innerHTML = "";
+                for (let i = 0; i < rules.length; i++) {
+                    let li = document.createElement("li");
+                    li.innerText = rules[i].rule;
+                    li.className = rules[i].isPassed ? "passed" : "failed";
+                    list.appendChild(li);
+                }
+            }
+            document.getElementById("passwordInput").addEventListener("input", checkPassword);
+            displayRules();
+        </script>
+    </body>
+</html>
