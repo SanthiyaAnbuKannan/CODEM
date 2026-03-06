@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 12 </title>
+        <style>
+            body{
+                font-family: Arial;
+                text-align:center;
+            }
+            #quizContainer{
+                width:400px;
+                margin:auto;
+            }
+            .option{
+                display:block;
+                padding:10px;
+                margin:8px;
+                background-color:lightblue;
+                border:none;
+                cursor:pointer;
+                font-size:16px;
+            }
+            .option:hover{
+                background-color:skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Quiz Engine</h2>
+        <div id="quizContainer"></div>
+        <script>
+            let quiz = [
+            {
+            question: "What is JavaScript?",
+            options: ["Language","Framework","Database"],
+            answer: "Language"
+            },
+            {
+            question: "Which keyword declares a variable?",
+            options: ["var","loop","print"],
+            answer: "var"
+            },
+            {
+            question: "Which company developed JavaScript?",
+            options: ["Microsoft","Netscape","Google"],
+            answer: "Netscape"
+            }
+            ];
+            let currentQuestion = 0;
+            let score = 0;
+            function loadQuestion(){
+            let container = document.getElementById("quizContainer");
+            container.innerHTML = "";
+            if(currentQuestion >= quiz.length)
+            {
+            container.innerHTML = "<h3>Quiz Finished</h3><p>Your Score: "+score+" / "+quiz.length+"</p>";
+            return;
+            }
+            let q = quiz[currentQuestion];
+            let question = document.createElement("h3");
+            question.innerText = q.question;
+            container.appendChild(question);
+            for(let i=0;i<q.options.length;i++)
+            {
+            let btn = document.createElement("button");
+            btn.className="option";
+            btn.innerText = q.options[i];
+            btn.onclick = function(){
+            checkAnswer(q.options[i]);
+            };
+            container.appendChild(btn);
+            }
+            }
+            function checkAnswer(selected){
+            if(selected === quiz[currentQuestion].answer)
+            {
+            score++;
+            }
+            currentQuestion++;
+            loadQuestion();
+            }
+            loadQuestion();
+        </script>
+    </body>
+</html>
