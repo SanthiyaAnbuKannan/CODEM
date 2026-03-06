@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 17 </title>
+    </head>
+    <body>
+        <h2>Expense Tracker</h2>
+        <div id="expenseList"></div>
+        <h3>Category Totals</h3>
+        <div id="categoryTotals"></div>
+        <h3 id="grandTotal"></h3>
+        <script>
+            let expenses = [
+                { category: "Food", amount: 200 },
+                { category: "Travel", amount: 500 },
+                { category: "Food", amount: 300 }
+            ];
+            function displayExpenses() {
+                let list = "<ul>";
+                for(let i = 0; i < expenses.length; i++) {
+                    list += "<li>" + expenses[i].category + " : ₹" + expenses[i].amount + "</li>";
+                }
+                list += "</ul>";
+                document.getElementById("expenseList").innerHTML = list;
+            }
+            function calculateTotals() {
+                let foodTotal = 0;
+                let travelTotal = 0;
+                for(let i = 0; i < expenses.length; i++) {
+                    if(expenses[i].category == "Food") {
+                        foodTotal += expenses[i].amount;
+                    }
+                    if(expenses[i].category == "Travel") {
+                        travelTotal += expenses[i].amount;
+                    }
+                }
+                let total = foodTotal + travelTotal;
+                document.getElementById("categoryTotals").innerHTML =
+                    "Food : ₹" + foodTotal + "<br>" +
+                    "Travel : ₹" + travelTotal;
+                document.getElementById("grandTotal").innerText =
+                    "Total : ₹" + total;
+            }
+            displayExpenses();
+            calculateTotals();
+        </script>
+    </body>
+</html>
