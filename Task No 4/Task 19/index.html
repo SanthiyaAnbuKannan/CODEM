@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 19 </title>
+        <style>
+            .card{
+                border:1px solid black;
+                padding:15px;
+                margin:10px;
+                width:150px;
+                display:inline-block;
+                text-align:center;
+                font-weight:bold;
+            }
+            button{
+                margin:5px;
+                padding:8px 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Dashboard Summary</h2>
+        <div id="cards"></div>
+        <br>
+        <button onclick="addUser()">Add User</button>
+        <button onclick="addOrder()">Add Order</button>
+        <button onclick="addRevenue()">Add Revenue</button>
+        <script>
+            let users = [1,2,3,4];
+            let orders = [500,1200,800];
+            let revenue = [5000,3000];
+            function updateDashboard(){
+                let totalUsers = 0;
+                let totalOrders = 0;
+                let totalRevenue = 0;
+                for(let i=0;i<users.length;i++){
+                    totalUsers++;
+                }
+                for(let i=0;i<orders.length;i++){
+                    totalOrders++;
+                }
+                for(let i=0;i<revenue.length;i++){
+                    totalRevenue = totalRevenue + revenue[i];
+                }
+                let html = `
+                <div class="card">Total Users<br>${totalUsers}</div>
+                <div class="card">Total Orders<br>${totalOrders}</div>
+                <div class="card">Total Revenue<br>₹${totalRevenue}</div>
+                `;
+                document.getElementById("cards").innerHTML = html;
+            }
+            function addUser(){
+                users.push(users.length + 1);
+                updateDashboard();
+            }
+            function addOrder(){
+                let amount = prompt("Enter Order Amount");
+                orders.push(Number(amount));
+                updateDashboard();
+            }
+            function addRevenue(){
+                let amount = prompt("Enter Revenue Amount");
+                revenue.push(Number(amount));
+                updateDashboard();
+            }
+            updateDashboard();
+        </script>
+    </body>
+</html>
