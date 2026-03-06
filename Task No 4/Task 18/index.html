@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Task 18 </title>
+</head>
+<body>
+<h2>Drag Order Simulator</h2>
+<ul id="list"></ul>
+<script>
+let items = ["Item A", "Item B", "Item C", "Item D"];
+function displayItems() {
+    let container = document.getElementById("list");
+    let html = "";
+    for(let i = 0; i < items.length; i++) {
+        html += `<li>${items[i]} <button onclick="moveUp(${i})">Move Up</button> <button onclick="moveDown(${i})">Move Down</button> </li>`;
+    }
+    container.innerHTML = html;
+}
+function moveUp(index) {
+    if(index === 0) return;
+    let temp = items[index];
+    items[index] = items[index - 1];
+    items[index - 1] = temp;
+    displayItems();
+}
+function moveDown(index) {
+    if(index === items.length - 1) return;
+    let temp = items[index];
+    items[index] = items[index + 1];
+    items[index + 1] = temp;
+    displayItems();
+}
+displayItems();
+</script>
+</body>
+</html>
