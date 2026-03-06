@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Task 14 </title>
+    <style>
+        body { font-family: Arial; text-align: center; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 5px 0; background-color: lightblue; padding: 8px; border-radius: 4px; width: 200px; margin-left:auto; margin-right:auto; }
+        h3 { margin-top: 15px; }
+    </style>
+</head>
+<body>
+<h2>Price Calculator</h2>
+<div id="priceList"></div>
+<div id="totals"></div>
+<script>
+let prices = [100, 200, 300];
+function calculatePrices() {
+    let container = document.getElementById("priceList");
+    container.innerHTML = "<ul>";
+    let total = 0;
+    for(let i = 0; i < prices.length; i++) {
+        container.innerHTML += "<li>Price " + (i+1) + ": " + prices[i] + "</li>";
+        total += prices[i];
+    }
+    container.innerHTML += "</ul>";
+    let tax = total * 0.10;
+    let subtotal = total + tax;
+    let discount = subtotal * 0.05; 
+    let final = subtotal - discount;
+    let totalsDiv = document.getElementById("totals");
+    totalsDiv.innerHTML = `<h3>Total Price: ${total}</h3> <h3>Tax (10%): ${tax}</h3> <h3>Subtotal (Total + Tax): ${subtotal}</h3> <h3>Discount (5%): ${discount}</h3> <h3>Final Price: ${final}</h3>`;
+}
+calculatePrices();
+</script>
+</body>
+</html>
