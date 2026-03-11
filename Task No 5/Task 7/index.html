@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 7 </title>
+    </head>
+    <body>
+        <form onsubmit="return validateEmail()">
+            Email: <input type="text" id="email"><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <script>
+            function validateEmail() {
+                let email = document.getElementById("email").value;
+                if(email.includes("@") && email.includes(".")) {
+                    console.log("Valid Email Format");
+                    return true;
+                } else {
+                    console.log("Invalid Email Format");
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>

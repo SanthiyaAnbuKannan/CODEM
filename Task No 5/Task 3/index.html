@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Task 3 </title>
+    </head>
+    <body>
+        <script>
+            function processNumber(num, callback) {
+                return callback(num);
+            }
+            function doubleNumber(n) {
+                return n * 2;
+            }
+            function halfNumber(n) {
+                return n / 2;
+            }
+            let doubleResult = processNumber(10, doubleNumber);
+            let halfResult = processNumber(10, halfNumber);
+            console.log("Double Result:", doubleResult);
+            console.log("Half Result:", halfResult);
+        </script>
+    </body>
+</html>
