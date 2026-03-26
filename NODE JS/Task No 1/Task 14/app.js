@@ -1,5 +1,5 @@
 const fs = require('fs');
-const createGreeting = require('./greeting');
+const createGreeting = require('./greetings');
 fs.readFile('names.txt', 'utf8', (err, data) => {
     if (err) {
         console.log("Error reading file");
